@@ -1,8 +1,8 @@
 {
-  "name": "backend",
+  "name": "aws-demo-backend-lambda",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "lambda.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
@@ -10,9 +10,5 @@
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "dotenv": "^17.2.2",
-    "express": "^5.1.0",
-    "nodemon": "^3.1.10"
-  }
+  "dependencies": {}
 }
