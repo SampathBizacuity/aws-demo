@@ -9,7 +9,7 @@ function UpdateComponent() {
 	const handleUpdate = async () => {
 		setResponse("Sending...");
 		try {
-			const res = await fetch("http://127.0.0.1:5000/api/update", {
+			const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/update`, {
 				method: "PUT",
 				headers: {
 					"Content-Type": "application/json",
@@ -47,7 +47,7 @@ export default function Home() {
 	const [backendMessage, setBackendMessage] = useState<string>("");
 
 	useEffect(() => {
-		fetch("http://127.0.0.1:5000/api/hello")
+		fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/hello`)
 			.then((res) => res.json())
 			.then((data) => setBackendMessage(data.message))
 			.catch(() => setBackendMessage("Could not connect to backend."));

@@ -15,9 +15,18 @@ A full-stack application demonstrating connection between a Next.js frontend and
 
 ## Getting Started
 
+### Environment Setup
+
+Environment variables are already configured in:
+- `backend/.env` - Backend server configuration
+- `frontend/.env` - Frontend API endpoint configuration
+
+You can modify these files to change URLs and ports as needed.
+
 ### Backend
 ```bash
 cd backend
+npm install
 node index.js
 ```
 Server runs on http://127.0.0.1:5000
@@ -25,6 +34,7 @@ Server runs on http://127.0.0.1:5000
 ### Frontend
 ```bash
 cd frontend
+npm install
 npm run dev
 ```
 Frontend runs on http://localhost:3000
