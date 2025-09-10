@@ -1,12 +1,13 @@
 {
   "name": "aws-demo-backend-lambda",
   "version": "1.0.0",
-  "description": "",
+  "description": "Lambda backend for aws-demo",
   "main": "lambda.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"No tests yet\"",
     "start": "node index.js",
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "package:lambda": "powershell -NoLogo -NoProfile -Command \"Remove-Item -Recurse -Force dist -ErrorAction SilentlyContinue; New-Item -ItemType Directory dist | Out-Null; Copy-Item lambda.js dist/; if (Test-Path node_modules) { Copy-Item -Recurse node_modules dist/ } ; Compress-Archive -Path dist/* -DestinationPath dist/lambda.zip -Force\""
   },
   "author": "",
   "license": "ISC",
