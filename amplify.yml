@@ -1,6 +1,10 @@
 version: 1
 applications:
   - appRoot: frontend
+    env:
+      variables:
+        NODE_VERSION: 20
+        FRONTEND_URL: https://your-frontend-domain.example # override per env in Amplify console
     frontend:
       phases:
         preBuild:
@@ -8,6 +12,7 @@ applications:
             - npm ci
         build:
           commands:
+            - npx next telemetry disable || true
             - npm run build
       artifacts:
         baseDirectory: .next
@@ -18,17 +23,11 @@ applications:
           - node_modules/**
     backend:
       phases:
-        preBuild:
-          commands:
-            - cd ../backend && npm ci
         build:
           commands:
-            - echo "Backend build complete (Lambda is ready)"
-      artifacts:
-        baseDirectory: ../backend
-        files:
-          - lambda.js
-          - package.json
+            # Move to repo root (one level up from appRoot) where the amplify/ directory will exist after you run 'amplify init'
+            - cd .. && amplify push --yes
+            - echo "Amplify backend push complete"
       cache:
         paths:
-          - ../backend/node_modules/**
+          - ../node_modules/**
