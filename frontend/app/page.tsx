@@ -11,13 +11,13 @@ function UpdateComponent() {
 		try {
 			const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/update`, {
 				method: "PUT",
-				headers: {
-					"Content-Type": "application/json",
-				},
-				body: JSON.stringify({ value: input }),
+				headers: { "Content-Type": "application/json" },
+				body: JSON.stringify({ value: input })
 			});
 			const data = await res.json();
-			setResponse(data.message + ": " + data.data);
+			// data.data may be an object; stringify safely
+			const payload = typeof data.data === 'object' ? JSON.stringify(data.data) : String(data.data);
+			setResponse(`${data.message}: ${payload}`);
 		} catch (err) {
 			setResponse("Error sending update");
 		}
