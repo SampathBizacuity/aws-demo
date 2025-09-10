@@ -21,13 +21,3 @@ applications:
       cache:
         paths:
           - node_modules/**
-    backend:
-      phases:
-        build:
-          commands:
-            # Move to repo root (one level up from appRoot) where the amplify/ directory will exist after you run 'amplify init'
-            - cd .. && amplify push --yes
-            - echo "Amplify backend push complete"
-      cache:
-        paths:
-          - ../node_modules/**
