@@ -14,8 +14,9 @@ applications:
           commands:
             - npx next telemetry disable || true
             - npm run build
+            - npx next export -o out
       artifacts:
-        baseDirectory: .next
+        baseDirectory: out
         files:
           - '**/*'
       cache:

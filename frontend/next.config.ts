@@ -1,8 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // SSR (default). Removed 'standalone' so Amplify can perform server rendering.
-  // Add future config options here.
+  // Use static export so Amplify can host without SSR rewrites.
+  output: 'export'
 };
 
 export default nextConfig;
