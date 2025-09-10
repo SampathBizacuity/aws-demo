@@ -1,8 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
-  output: 'standalone',
+  // SSR (default). Removed 'standalone' so Amplify can perform server rendering.
+  // Add future config options here.
 };
 
 export default nextConfig;

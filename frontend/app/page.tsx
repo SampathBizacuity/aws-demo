@@ -18,7 +18,7 @@ function UpdateComponent() {
 			// data.data may be an object; stringify safely
 			const payload = typeof data.data === 'object' ? JSON.stringify(data.data) : String(data.data);
 			setResponse(`${data.message}: ${payload}`);
-		} catch (err) {
+		} catch (_err) {
 			setResponse("Error sending update");
 		}
 	};
