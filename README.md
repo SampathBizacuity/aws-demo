@@ -77,3 +77,15 @@ Steps to deploy the backend independently:
 	- `PUT <invoke-url>/api/update` with JSON `{ "value": "test" }`.
 
 If you later add dependencies, re-run the packaging script before uploading a new version.
+
+## Amplify Frontend Hosting (Only Frontend)
+
+1. Push this repo to Git hosting (GitHub/GitLab/CodeCommit).
+2. In AWS Amplify Console → Host Web App → Connect repository/branch (e.g. master).
+3. Amplify detects `amplify.yml`; accept it. Ensure build image supports Node 20 (we set NODE_VERSION in `amplify.yml`; `.nvmrc` also added).
+4. Add environment variable: `NEXT_PUBLIC_BACKEND_URL` = your API base (no trailing slash).
+5. Start build. On success, open the provided Amplify URL and verify API calls.
+6. (Optional) Add custom domain: Amplify Console → Domain management.
+7. (Optional) After going live, tighten CORS in Lambda & API to just the Amplify domain.
+
+Deployment triggers: every commit to the connected branch. To change backend URL, update the env var in Amplify and redeploy.
