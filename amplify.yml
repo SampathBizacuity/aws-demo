@@ -13,8 +13,7 @@ applications:
         build:
           commands:
             - npx next telemetry disable || true
-            - npm run build
-            - npx next export -o out
+            - npm run build # output:'export' already produces 'out' automatically
       artifacts:
         baseDirectory: out
         files:
